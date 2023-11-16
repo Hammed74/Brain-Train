@@ -1,38 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="index.js" defer></script>
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1 class="title">MEMORY CARD GAME</h1>
-            <p class="subtitle">This game will test your memory. Match the icons to their respective cards after they have flipped over good luck!</p>
-        </header>
-        <div class="game-container">
+      <header>
+        <h1 class="title">MEMORY CARD GAME</h1>
+        <p class="subtitle">
+          This game will test your memory. Match the icons to their respective
+          cards after they have flipped over good luck!
+        </p>
+      </header>
+      <div class="game-container">
+        <div class="countdown"></div>
+        <div class="board-container">
             <div class="game-board">
-                <div class="card1 card"></div>
-                <div class="card2 card"></div>
-                <div class="card3 card"></div>
-                <div class="card4 card"></div>
-                <div class="card5 card"></div>
-                <div class="card6 card"></div>
-                <div class="card7 card"></div>
-                <div class="card8 card"></div>
-                <div class="card9 card"></div>
-                <div class="card10 card"></div>
-                <div class="card11 card"></div>
-                <div class="card12 card"></div>
-                <div class="card13 card"></div>
-                <div class="card14 card"></div>
-                <div class="card15 card"></div>
-                <div class="card16 card"></div>
+              <div class="card1 card">
+                <div class="back"></div>
+              </div>
+              <div class="card2 card">
+                <div class="back"></div>
+              </div>
+              <div class="card3 card">
+                <div class="back"></div>
+              </div>
+              <div class="card4 card">
+                <div class="back"></div>
+              </div>
+              <div class="card5 card">
+                <div class="back"></div>
+              </div>
+              <div class="card6 card">
+                <div class="back"></div>
+              </div>
+              <div class="card7 card">
+                <div class="back"></div>
+              </div>
+              <div class="card8 card">
+                <div class="back"></div>
+              </div>
+              <div class="card9 card">
+                <div class="back"></div>
+              </div>
+              <div class="card10 card">
+                <div class="back"></div>
+              </div>
+              <div class="card11 card">
+                <div class="back"></div>
+              </div>
+              <div class="card12 card">
+                <div class="back"></div>
+              </div>
+              <div class="card13 card">
+                <div class="back"></div>
+              </div>
+              <div class="card14 card">
+                <div class="back"></div>
+              </div>
+              <div class="card15 card">
+                <div class="back"></div>
+              </div>
+              <div class="card16 card">
+                <div class="back"></div>
+              </div>
             </div>
+            <button class="flip">FLIP</button>
         </div>
+        <div class="icons">
+          <p class="icons-title">DRAG THESE</p>
+          <div class="icon1 icon">
+            <img src="assets/helmet.png" draggable="true" alt="" />
+          </div>
+          <div class="icon2 icon">
+            <img src="assets/basketball.png" draggable="true" alt="" />
+          </div>
+          <div class="icon3 icon">
+            <img src="assets/baseball.png" draggable="true" alt="" />
+          </div>
+          <div class="icon4 icon">
+            <img src="assets/soccer.png" draggable="true" alt="" />
+          </div>
+        </div>
+
+      </div>
     </div>
-</body>
+  </body>
 </html>
