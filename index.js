@@ -30,13 +30,11 @@ const gameBoard = () => {
 submitBtn.addEventListener("click",() =>{
     submitBtn.style.display = "none"
     flipBtn.style.display = "flex"
-    flipCards()
     checkWinner();
     const playerScore = document.querySelector(".player-score")
    iconWrapper.style.display = "none"
    playerScore.textContent = `${score}/16`
    scoreDisplay.style.display = "block"
-
 })
   const flipBtn = document.querySelector(".flip");
   function flipCards() {
@@ -76,6 +74,7 @@ submitBtn.addEventListener("click",() =>{
   startBtn.addEventListener("click", () => {
     backOfCards.forEach((back) => {
       back.innerHTML = "";
+      back.style.backgroundColor = ""
     });
     score = 0
     flipBtn.style.display = ""
@@ -83,6 +82,7 @@ submitBtn.addEventListener("click",() =>{
     iconWrapper.style.display = ""
     scoreDisplay.style.display = ""
     startBtn.style.top = "0";
+
     randomCardGenerator();
     startTimer();
     startBtn.textContent = "RESTART";
@@ -118,7 +118,10 @@ submitBtn.addEventListener("click",() =>{
           grandParent.className.includes("soccer"))
       ) {
         console.log("score is true");
+        piece.parentElement.style.backgroundColor = "rgb(108, 255, 120)";
         score++;
+      }else{
+        piece.parentElement.style.backgroundColor = "rgb(255, 87, 87)";
       }
     });
     console.log(score)
@@ -156,11 +159,11 @@ const startGame = () => {
     });
   });
   backOfCards.forEach((back) => {
-    back.addEventListener("click", () => {});
     back.addEventListener("dragover", (event) => {
       event.preventDefault();
     });
     back.addEventListener("drop", (event) => {
+     if(back.innerHTML === "")  { 
       const iconCopy = document.createElement("img");
       iconCopy.src = `${selected.src}`;
       iconCopy.draggable = true;
@@ -197,7 +200,9 @@ const startGame = () => {
       });
       back.appendChild(selected);
       selected = null;
+    }
     });
+
   });
 };
 
