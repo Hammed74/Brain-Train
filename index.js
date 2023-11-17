@@ -1,7 +1,7 @@
 const gameBoard = () => {
   const cards = document.querySelectorAll(".card");
   const startBtn = document.querySelector("#start");
-    const backOfCards = document.querySelectorAll(".back");
+  const backOfCards = document.querySelectorAll(".back");
   let cardsFaceUp = true;
   let timerInterval;
   function randomCardGenerator() {
@@ -45,7 +45,7 @@ const gameBoard = () => {
       if (remainingSeconds <= 0) {
         clearInterval(timerInterval); // Stop the timer when 10 seconds have elapsed
         console.log("Timer finished!");
-        flipCards()
+        flipCards();
       } else {
         console.log(`Remaining time: ${remainingSeconds} seconds`);
       }
@@ -53,9 +53,9 @@ const gameBoard = () => {
   }
 
   startBtn.addEventListener("click", () => {
-    backOfCards.forEach(back => {
-        back.innerHTML = ""
-    })
+    backOfCards.forEach((back) => {
+      back.innerHTML = "";
+    });
     countdownTimer = 10;
     startBtn.style.top = "0";
     randomCardGenerator();
@@ -86,18 +86,24 @@ const startGame = () => {
   const iconContainer3 = document.querySelector(".icon3");
   const iconContainer4 = document.querySelector(".icon4");
   let selected;
+  let isActive = false;
 
   icons.forEach((icon) => {
     icon.addEventListener("dragstart", (event) => {
       icon.style.width = "70%";
       selected = event.target;
-      console.log(selected);
+      console.log(selected.parentElement);
+      if (selected.parentElement.className.includes("icon")){
+        isActive = false
+        console.log("isActive is " + isActive);
+    } else if (selected.parentElement.className.includes("back")){
+        isActive = true
+        console.log("isActive is " + isActive);
+    }
     });
   });
   backOfCards.forEach((back) => {
-    back.addEventListener("click", () => {
-      console.log("You clicked the back");
-    });
+    back.addEventListener("click", () => {});
     back.addEventListener("dragover", (event) => {
       event.preventDefault();
     });
@@ -105,27 +111,35 @@ const startGame = () => {
       const iconCopy = document.createElement("img");
       iconCopy.src = `${selected.src}`;
       iconCopy.draggable = true;
-      console.log(selected.id);
       iconCopy.classList.add("drag-icons");
-      if (selected.id === "1") {
-        iconCopy.id = "1";
-        iconContainer1.appendChild(iconCopy);
-      } else if (selected.id === "2") {
-        iconCopy.id = "2";
-        iconContainer2.appendChild(iconCopy);
-      } else if (selected.id === "3") {
-        iconCopy.id = "3";
-        iconContainer3.appendChild(iconCopy);
-      } else if (selected.id === "4") {
-        iconCopy.id = "4";
-        iconContainer4.appendChild(iconCopy);
-      }
 
+      if (!isActive) {
+        if (selected.id === "1") {
+          iconCopy.id = "1";
+          iconContainer1.appendChild(iconCopy);
+        } else if (selected.id === "2") {
+          iconCopy.id = "2";
+          iconContainer2.appendChild(iconCopy);
+        } else if (selected.id === "3") {
+          iconCopy.id = "3";
+          iconContainer3.appendChild(iconCopy);
+        } else if (selected.id === "4") {
+          iconCopy.id = "4";
+          iconContainer4.appendChild(iconCopy);
+        }
+      }
       iconCopy.addEventListener("dragstart", (event) => {
         iconCopy.style.width = "70%";
         selected = event.target;
+        console.log(selected.parentElement);
+            if (selected.parentElement.className.includes("icon")) {
+              isActive = false;
+              console.log("isActive is " + isActive);
+            } else if (selected.parentElement.className.includes("back")) {
+              isActive = true;
+              console.log("isActive is " + isActive);
+            }
       });
-
       back.appendChild(selected);
       selected = null;
     });

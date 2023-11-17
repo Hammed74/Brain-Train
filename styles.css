@@ -33,8 +33,7 @@ header {
   font-size: max(14px, calc(0.1em + 1vw));
 }
 
-.container{
-
+.container {
 }
 .game-container {
   display: grid;
@@ -50,8 +49,8 @@ header {
 
 .card {
   aspect-ratio: 1/1.3;
-    width: max(60px,5.3vw);
-    max-width: 120px ;
+  width: max(60px, 5.3vw);
+  max-width: 120px;
   height: auto;
   background-color: #ffffff;
   box-shadow: 17px 20px 50px -17px rgba(0, 0, 0, 0.57);
@@ -64,104 +63,112 @@ header {
   transition: transform 0.5s ease-out;
 }
 
-.card:hover{
-    transform: translateY(-14px);
+.card:hover {
+  transform: translateY(-14px);
 }
 
-.back{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   font-family: Poppins;
-    position: absolute;
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins;
+  position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
   transform: rotateY(180deg);
-    background-color: #ffffff;
+  background-color: #ffffff;
   box-shadow: 17px 20px 50px -17px rgba(0, 0, 0, 0.57);
   border-radius: 10px;
   z-index: 999;
-  
 }
 
-.icons-title{
-    font-family: Poppins;
-    font-weight: 600;
-    font-size: max(8px, calc(1.5em + 1vw)); 
-    text-align: center;
-    margin-bottom: 30px;
-    margin-top: -10px;
-    animation: bounce 1s ease-in-out infinite;
+.icons-title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: max(8px, calc(1.5em + 1vw));
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: -10px;
+  animation: bounce 1s ease-in-out infinite;
+  text-wrap: nowrap;
 }
 
 @keyframes bounce {
-    50%{
-        transform: translateY(10px);
-    }
-    
+  50% {
+    transform: translateY(10px);
+  }
 }
-.icons{
-    display: flex;
-    flex-direction: column;
-    align-items:  center;
+.icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.icon{
-    aspect-ratio: 1/1.3;
-    width: max(60px,5.3vw);
-    max-width: 120px ;
+.icon {
+  aspect-ratio: 1/1.3;
+  width: max(60px, 5.3vw);
+  max-width: 120px;
   height: auto;
 }
 
-.icon > img{
-    width: 70%;
+.icon > img {
+  width: 70%;
 }
 
-.board-container{
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flip {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.flip{
-    margin-top: 50px;
-    width: 150px;
-    height: 40px;
-    border: none;
-    color: white;
-    font-family: Poppins;
-    background-color: rgb(28, 28, 28);
-    font-size: 24px;
-    letter-spacing: 6px;
-}
-
-.countdown{
-    padding: 10px;
-}
-.timer{
-    position: relative;
-    top: 10%;
-    width: fit-content;
-    color: black;
-    font-size: calc(10em + 2vw);
-    font-family: Poppins;
-    background-color: #ffffff;
-    position: relative;
-    margin: 0px auto;
-
+  margin-top: 50px;
+  width: 150px;
+  height: 40px;
+  border: none;
+  color: white;
+  font-size: max(8px, calc(0.75em + 1vw));
+  font-family: Poppins;
+  background-color: rgb(28, 28, 28);
+  font-size: 24px;
+  letter-spacing: 6px;
+  border-radius: 3px;
+  font-weight: 600;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
-#start{
-    display: block;
-    position: relative;
-    top: 40%;
-    margin: 0px auto;
-    width: 150px;
-    height: 40px;
-    border: none;
-    color: white;
-    font-family: Poppins;
-    background-color: rgb(28, 28, 28);
-    font-size: 24px;
-    letter-spacing: 6px;
-    transition: 1s ease-out;
+.countdown {
+  padding: 10px;
+}
+.timer {
+  position: relative;
+  top: 10%;
+  width: fit-content;
+  color: black;
+  font-size: calc(10em + 2vw);
+  font-family: Poppins;
+  background-color: #ffffff;
+  position: relative;
+  margin: 0px auto;
+}
+
+#start {
+  display: flex;
+  position: relative;
+  top: 40%;
+  margin: 0px auto;
+  height: 40px;
+  border: none;
+  color: white;
+  font-family: Poppins;
+  background-color: rgb(28, 28, 28);
+  font-size: max(8px, calc(0.75em + 1vw));
+  letter-spacing: 6px;
+  transition: 1s ease-out;
+  border-radius: 3px;
+  padding: 10px;
+  align-items: center;
+  font-weight: 600;
 }
