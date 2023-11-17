@@ -4,23 +4,29 @@ const gameBoard = () => {
   const backOfCards = document.querySelectorAll(".back");
   let cardsFaceUp = true;
   let timerInterval;
+  let score = 0;
   function randomCardGenerator() {
     cards.forEach((card) => {
       let randomNum = Math.floor(Math.random() * 4 + 1);
       if (randomNum === 1) {
         card.style.backgroundImage = "url(assets/helmet.png)";
-      } else if (randomNum === 2)
+        card.classList.add("helmet");
+      } else if (randomNum === 2) {
         card.style.backgroundImage = "url(assets/soccer.png)";
-      else if (randomNum === 3) {
+        card.classList.add("soccer");
+      } else if (randomNum === 3) {
         card.style.backgroundImage = "url(assets/basketball.png)";
+        card.classList.add("basketball");
       } else if (randomNum === 4) {
         card.style.backgroundImage = "url(assets/baseball.png)";
+        card.classList.add("baseball");
       }
     });
   }
 
   const flipBtn = document.querySelector(".flip");
   function flipCards() {
+    checkWinner();
     cards.forEach((card) => {
       if (card.style.transform === "") {
         card.style.transform = "rotateY(180deg)";
@@ -68,6 +74,37 @@ const gameBoard = () => {
       console.log("start clicked");
     }
   });
+  function createList() {
+    elements = document.querySelectorAll(".back > img");
+    return elements;
+  }
+
+  function checkWinner() {
+    const basketball = "url(assets/basketball.png)";
+    const helmet = "url(assets/helmet.png)";
+    const soccer = "url(assets/soccer.png)";
+    const baseball = "url(assets/baseball.png)";
+    let pieces = createList();
+    console.log(pieces);
+    pieces.forEach((piece) => {
+      let grandParent = piece.parentElement.parentElement;
+      console.log(piece.className);
+      console.log(grandParent.className);
+      if (
+        (piece.className.includes("helmet") &&
+          grandParent.className.includes("helmet")) ||
+        (piece.className.includes("basketball") &&
+          grandParent.className.includes("basketball")) ||
+        (piece.className.includes("baseball") &&
+          grandParent.className.includes("baseball")) ||
+        (piece.className.includes("soccer") &&
+          grandParent.className.includes("soccer"))
+      ) {
+        console.log("score is true");
+        score++;
+      }
+    });
+  }
   randomCardGenerator();
   startTimer;
   return {
@@ -92,14 +129,12 @@ const startGame = () => {
     icon.addEventListener("dragstart", (event) => {
       icon.style.width = "70%";
       selected = event.target;
-      console.log(selected.parentElement);
-      if (selected.parentElement.className.includes("icon")){
-        isActive = false
-        console.log("isActive is " + isActive);
-    } else if (selected.parentElement.className.includes("back")){
-        isActive = true
-        console.log("isActive is " + isActive);
-    }
+
+      if (selected.parentElement.className.includes("icon")) {
+        isActive = false;
+      } else if (selected.parentElement.className.includes("back")) {
+        isActive = true;
+      }
     });
   });
   backOfCards.forEach((back) => {
@@ -115,15 +150,19 @@ const startGame = () => {
 
       if (!isActive) {
         if (selected.id === "1") {
+          iconCopy.classList.add("helmet");
           iconCopy.id = "1";
           iconContainer1.appendChild(iconCopy);
         } else if (selected.id === "2") {
+          iconCopy.classList.add("basketball");
           iconCopy.id = "2";
           iconContainer2.appendChild(iconCopy);
         } else if (selected.id === "3") {
+          iconCopy.classList.add("baseball");
           iconCopy.id = "3";
           iconContainer3.appendChild(iconCopy);
         } else if (selected.id === "4") {
+          iconCopy.classList.add("soccer");
           iconCopy.id = "4";
           iconContainer4.appendChild(iconCopy);
         }
@@ -132,13 +171,11 @@ const startGame = () => {
         iconCopy.style.width = "70%";
         selected = event.target;
         console.log(selected.parentElement);
-            if (selected.parentElement.className.includes("icon")) {
-              isActive = false;
-              console.log("isActive is " + isActive);
-            } else if (selected.parentElement.className.includes("back")) {
-              isActive = true;
-              console.log("isActive is " + isActive);
-            }
+        if (selected.parentElement.className.includes("icon")) {
+          isActive = false;
+        } else if (selected.parentElement.className.includes("back")) {
+          isActive = true;
+        }
       });
       back.appendChild(selected);
       selected = null;
