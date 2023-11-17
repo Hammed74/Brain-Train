@@ -64,7 +64,9 @@ submitBtn.addEventListener("click",() =>{
         console.log("Timer finished!");
         flipCards();
         iconsTitle.textContent = "DRAG THESE"
+        iconsTitle.style.animation = "bounce 1s ease-in-out infinite"
         submitBtn.style.display = "flex";
+
       } else {
         console.log(`Remaining time: ${remainingSeconds} seconds`);
       }
@@ -75,6 +77,9 @@ submitBtn.addEventListener("click",() =>{
     backOfCards.forEach((back) => {
       back.innerHTML = "";
       back.style.backgroundColor = ""
+      iconsTitle.textContent = "FOCUS"
+      iconsTitle.style.animation = ""
+      
     });
     score = 0
     flipBtn.style.display = ""

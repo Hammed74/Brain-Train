@@ -88,7 +88,7 @@ header {
   text-align: center;
   margin-bottom: 30px;
   margin-top: -10px;
-  animation: bounce 1s ease-in-out infinite;
+  animation: sway 2s ease-in-out infinite;
   text-wrap: nowrap;
 }
 
@@ -96,6 +96,18 @@ header {
   50% {
     transform: translateY(10px);
   }
+}
+
+@keyframes sway{
+    0%{
+        transform: translateX(15px);
+    }
+    50%{
+        transform: translateX(-20px);
+    }
+    100%{
+        transform: translateX(15px);
+    }
 }
 .icons {
   display: flex;
