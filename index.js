@@ -1,6 +1,7 @@
 const gameBoard = () => {
   const cards = document.querySelectorAll(".card");
   const startBtn = document.querySelector("#start");
+    const backOfCards = document.querySelectorAll(".back");
   let cardsFaceUp = true;
   let timerInterval;
   function randomCardGenerator() {
@@ -52,6 +53,9 @@ const gameBoard = () => {
   }
 
   startBtn.addEventListener("click", () => {
+    backOfCards.forEach(back => {
+        back.innerHTML = ""
+    })
     countdownTimer = 10;
     startBtn.style.top = "0";
     randomCardGenerator();
