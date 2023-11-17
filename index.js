@@ -78,7 +78,7 @@ submitBtn.addEventListener("click",() =>{
       back.innerHTML = "";
       back.style.backgroundColor = ""
       iconsTitle.textContent = "FOCUS"
-      iconsTitle.style.animation = ""
+      iconsTitle.style.animation = "";
       
     });
     score = 0
