@@ -33,8 +33,6 @@ header {
   font-size: max(14px, calc(0.1em + 1vw));
 }
 
-.container {
-}
 .game-container {
   display: grid;
   justify-content: center;
@@ -103,6 +101,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 .icon {
   aspect-ratio: 1/1.3;
@@ -121,7 +120,7 @@ header {
   align-items: center;
 }
 .flip {
-    display: flex;
+    display: none;
   margin-top: 50px;
   width: 150px;
   height: 40px;
@@ -152,6 +151,7 @@ header {
   background-color: #ffffff;
   position: relative;
   margin: 0px auto;
+  font-weight: 100;
 }
 
 #start {
@@ -171,4 +171,52 @@ header {
   padding: 10px;
   align-items: center;
   font-weight: 600;
+}
+
+.submit{
+        display: none;
+  margin-top: 50px;
+  width: 150px;
+  height: 40px;
+  border: none;
+  color: white;
+  font-size: max(8px, calc(0.75em + 1vw));
+  font-family: Poppins;
+  background-color: rgb(28, 28, 28);
+  font-size: 24px;
+  letter-spacing: 6px;
+  border-radius: 3px;
+  font-weight: 600;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+}
+
+.score-display{
+   display: none;
+     font-family: Poppins;
+  font-weight: 600;
+  font-size: max(8px, calc(1.5em + 1vw));
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: -10px;
+  text-wrap: nowrap;
+}
+
+.player-score{
+     font-family: Poppins;
+  font-weight: 100;
+  font-size: max(8px, calc(1.5em + 1vw));
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10vh;
+  text-wrap: nowrap;
 }

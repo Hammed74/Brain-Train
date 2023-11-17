@@ -2,6 +2,10 @@ const gameBoard = () => {
   const cards = document.querySelectorAll(".card");
   const startBtn = document.querySelector("#start");
   const backOfCards = document.querySelectorAll(".back");
+  const submitBtn = document.querySelector(".submit")
+  const iconsTitle = document.querySelector(".icons-title")
+   const iconWrapper = document.querySelector(".icon-wrapper");
+   const scoreDisplay = document.querySelector(".score-display");
   let cardsFaceUp = true;
   let timerInterval;
   let score = 0;
@@ -23,10 +27,19 @@ const gameBoard = () => {
       }
     });
   }
+submitBtn.addEventListener("click",() =>{
+    submitBtn.style.display = "none"
+    flipBtn.style.display = "flex"
+    flipCards()
+    checkWinner();
+    const playerScore = document.querySelector(".player-score")
+   iconWrapper.style.display = "none"
+   playerScore.textContent = `${score}/16`
+   scoreDisplay.style.display = "block"
 
+})
   const flipBtn = document.querySelector(".flip");
   function flipCards() {
-    checkWinner();
     cards.forEach((card) => {
       if (card.style.transform === "") {
         card.style.transform = "rotateY(180deg)";
@@ -52,6 +65,8 @@ const gameBoard = () => {
         clearInterval(timerInterval); // Stop the timer when 10 seconds have elapsed
         console.log("Timer finished!");
         flipCards();
+        iconsTitle.textContent = "DRAG THESE"
+        submitBtn.style.display = "flex";
       } else {
         console.log(`Remaining time: ${remainingSeconds} seconds`);
       }
@@ -62,7 +77,11 @@ const gameBoard = () => {
     backOfCards.forEach((back) => {
       back.innerHTML = "";
     });
-    countdownTimer = 10;
+    score = 0
+    flipBtn.style.display = ""
+    submitBtn.style.display = ""
+    iconWrapper.style.display = ""
+    scoreDisplay.style.display = ""
     startBtn.style.top = "0";
     randomCardGenerator();
     startTimer();
@@ -88,8 +107,6 @@ const gameBoard = () => {
     console.log(pieces);
     pieces.forEach((piece) => {
       let grandParent = piece.parentElement.parentElement;
-      console.log(piece.className);
-      console.log(grandParent.className);
       if (
         (piece.className.includes("helmet") &&
           grandParent.className.includes("helmet")) ||
@@ -104,6 +121,7 @@ const gameBoard = () => {
         score++;
       }
     });
+    console.log(score)
   }
   randomCardGenerator();
   startTimer;
