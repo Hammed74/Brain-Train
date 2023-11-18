@@ -78,7 +78,6 @@ submitBtn.addEventListener("click",() =>{
 
   startBtn.addEventListener("click", () => {
     cards.forEach(card=>{
-        console.log(card.classList);
         let classArray = card.classList
         let lastAdded = card.classList[classArray.length - 1]
         card.classList.remove(lastAdded)
@@ -106,7 +105,6 @@ submitBtn.addEventListener("click",() =>{
       flipCards();
     } else {
       startBtn.textContent === "RESTART";
-      console.log("start clicked");
     }
   });
   function createList() {
@@ -120,7 +118,6 @@ submitBtn.addEventListener("click",() =>{
     const soccer = "url(assets/soccer.png)";
     const baseball = "url(assets/baseball.png)";
     let pieces = createList();
-    console.log(pieces);
     pieces.forEach((piece) => {
       let grandParent = piece.parentElement.parentElement;
       if (
@@ -133,14 +130,12 @@ submitBtn.addEventListener("click",() =>{
         (piece.className.includes("soccer") &&
           grandParent.className.includes("soccer"))
       ) {
-        console.log("score is true");
         piece.parentElement.style.backgroundColor = "rgb(108, 255, 120)";
         score++;
       }else{
         piece.parentElement.style.backgroundColor = "rgb(255, 87, 87)";
       }
     });
-    console.log(score)
   }
   randomCardGenerator();
   startTimer;
@@ -213,7 +208,6 @@ const startGame = () => {
       iconCopy.addEventListener("dragstart", (event) => {
         iconCopy.style.width = "70%";
         selected = event.target;
-        console.log(selected.parentElement);
         if (selected.parentElement.className.includes("icon")) {
           isActive = false;
         } else if (selected.parentElement.className.includes("back")) {
