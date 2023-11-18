@@ -6,6 +6,7 @@ const gameBoard = () => {
   const iconsTitle = document.querySelector(".icons-title")
    const iconWrapper = document.querySelector(".icon-wrapper");
    const scoreDisplay = document.querySelector(".score-display");
+   let run = 0
   let cardsFaceUp = true;
   let timerInterval;
   let score = 0;
@@ -27,6 +28,8 @@ const gameBoard = () => {
       }
     });
   }
+
+  
 submitBtn.addEventListener("click",() =>{
     submitBtn.style.display = "none"
     flipBtn.style.display = "flex"
@@ -61,19 +64,23 @@ submitBtn.addEventListener("click",() =>{
       timer.textContent = remainingSeconds;
       if (remainingSeconds <= 0) {
         clearInterval(timerInterval); // Stop the timer when 10 seconds have elapsed
-        console.log("Timer finished!");
         flipCards();
         iconsTitle.textContent = "DRAG THESE"
         iconsTitle.style.animation = "bounce 1s ease-in-out infinite"
         submitBtn.style.display = "flex";
 
-      } else {
-        console.log(`Remaining time: ${remainingSeconds} seconds`);
       }
     }, 1000); // Update the timer every second (1000 milliseconds)
   }
 
   startBtn.addEventListener("click", () => {
+    cards.forEach(card=>{
+        console.log(card.classList);
+        let classArray = card.classList
+        let lastAdded = card.classList[classArray.length - 1]
+        card.classList.remove(lastAdded)
+    })
+
     backOfCards.forEach((back) => {
       back.innerHTML = "";
       back.style.backgroundColor = ""
@@ -87,6 +94,7 @@ submitBtn.addEventListener("click",() =>{
     iconWrapper.style.display = ""
     scoreDisplay.style.display = ""
     startBtn.style.top = "0";
+    run++
 
     randomCardGenerator();
     startTimer();
