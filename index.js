@@ -6,6 +6,7 @@ const gameBoard = () => {
   const iconsTitle = document.querySelector(".icons-title")
    const iconWrapper = document.querySelector(".icon-wrapper");
    const scoreDisplay = document.querySelector(".score-display");
+       const hint = document.querySelector(".hint");
    let run = 0
   let cardsFaceUp = true;
   let timerInterval;
@@ -33,6 +34,7 @@ const gameBoard = () => {
 submitBtn.addEventListener("click",() =>{
     submitBtn.style.display = "none"
     flipBtn.style.display = "flex"
+    hint.style.display = ""
     checkWinner();
     const playerScore = document.querySelector(".player-score")
    iconWrapper.style.display = "none"
@@ -68,6 +70,7 @@ submitBtn.addEventListener("click",() =>{
         iconsTitle.textContent = "DRAG THESE"
         iconsTitle.style.animation = "bounce 1s ease-in-out infinite"
         submitBtn.style.display = "flex";
+        hint.style.display = "block"
 
       }
     }, 1000); // Update the timer every second (1000 milliseconds)
@@ -164,6 +167,12 @@ const startGame = () => {
       icon.style.width = "70%";
       selected = event.target;
 
+      icon.addEventListener("dblclick", () => {
+        if (icon.parentElement.className.includes("back")) {
+          icon.remove();
+        }
+      });
+
       if (selected.parentElement.className.includes("icon")) {
         isActive = false;
       } else if (selected.parentElement.className.includes("back")) {
@@ -211,6 +220,12 @@ const startGame = () => {
           isActive = true;
         }
       });
+
+      iconCopy.addEventListener("dblclick", (event)=>{
+        if(iconCopy.parentElement.className.includes("back")){
+            iconCopy.remove()
+        }
+      })
       back.appendChild(selected);
       selected = null;
     }
